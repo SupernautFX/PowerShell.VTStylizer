@@ -12,8 +12,34 @@ Write-Output "$($VTStyle.Bold)$($VTStyle.F9)This text will be Red and Bold!$($VT
 Install VTStylizer from the [PowerShell Gallery](https://www.powershellgallery.com/) using `Install-Module`.
 
 ```powershell
-Install-Module -Name VTStylizer
+Install-Module -Name VTStylizer -AllowPrerelease
 ```
+
+## '$VTStyle' Tokens and Modifiers
+
+The '`$VTStyle`' Token Variable is the main, Base Token and has no noticeable effect. Referencing the Variable returns all available Token Modifiers, however, due to the manner in which the PSObject that makes up the backend is structured, doing so will return *well over 500 Values*, as you will not only see Text Special Formatting Values, but also Modifiers for all 256 ANSI Color Codes, once each, for Foreground and Background Color Variants. Adding a Command to return *just* the desired Token Modifiers and their respective effcts will come with the next Update! In the meantime, here are the available Modifiers as of the Current Prerelease Version:
+
+**$VTStyle.R** - ANSI Reset Sequence. Resets all Effects.
+**$VTStyle.Flash** - Flashing Text.
+**$VTStyle.FlashOff** - Reset Flashing Text.
+**$VTStyle.Bold** - Bold Text.
+**$VTStyle.BoldOff** - Reset Bold Text.
+**$VTStyle.Italic** - Italicized Text.
+**$VTStyle.ItalicOff** - Reset Italicized Text.
+**$VTStyle.Underline** - Underlined Text.
+**$VTStyle.UnderlineOff** - Reset Underlined Text.
+**$VTStyle.Strikethrough** - Strikethrough Text.
+**$VTStyle.StrikethroughOff** - Reset Strikethrough Text.
+**$VTStyle.Hidden** - Hide Text. (Alternates between Hidden and Visible when paired with Flash Modifier).
+**$VTStyle.HiddenOff** - Reset Hide Text.
+
+**$VTStyle.F** - Set Text Foreground Color. 'F' MUST be followed by a number between 0 and 255, with the number corresponding to ANSI Color Codes.
+**$VTStyle.B** - Set Text Background Color. 'B' MUST be followed by a number between 0 and 255, with the number corresponding to ANSI Color Codes.
+
+## '$VTStyle' Tokens and Modifiers (PLANNED)
+
+**$VTStyle.Invert** - Invert Text Foreground and Background Colors.
+**$VTStyle.InvertOff** - Reset Invert Effect.
 
 ## Planned Features
 
